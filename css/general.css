@@ -1,0 +1,215 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Catamaran', sans-serif;
+}
+:root{
+    --celeste: #94b5f1;
+}
+body{
+    background-image: linear-gradient(45deg, transparent 20%, #bbbbbb 25%, transparent 25%), 
+                    linear-gradient(-45deg, transparent 20%, #bbbbbb 25%, transparent 25%), 
+                    linear-gradient(-45deg, transparent 75%, #bbbbbb 80%, transparent 0),
+                    radial-gradient(rgb(175, 175, 175) 2px, transparent 0);
+    background-size: 30px 30px, 30px 30px;
+    background-color: #f3f3f3;
+}
+/*---------------------------- HEADER --------------------*/
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    box-shadow: 0px 12px 43px -26px rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    z-index: 1000;
+}
+.container-header{
+    /* background-color: aqua; */
+    margin: 0 20px;
+    padding: 0 5%;
+    height: 100%;
+}
+.container-header .logo,
+.container-footer .logo{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-header .logo .tooth,
+.container-footer .logo .tooth{
+    color: #fff;
+    background-color:var(--celeste);
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 35px;
+    margin-right: 10px;
+}
+.container-header .logo p,
+.container-footer .logo p{
+    font-family: 'Lobster Two', cursive;
+    font-size: 34px;
+    font-style: italic;
+    font-weight: 400;
+}
+/* -----------------------Menu de navegacion--------------------- */
+.navegacion{
+    height: 100%;
+    margin: 0 20px;
+    transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.navegacion ul{
+    height: 100%;
+    display: flex;
+    list-style: none;
+}
+.navegacion ul li{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .navegacion ul li::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 2px;
+    background-color: red;
+} */
+.navegacion ul li a{
+    height: 100%;
+    padding: 0 10px;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.navegacion-selected a{
+    background-color: #d8d8d8;
+}
+.navegacion ul li a::before{
+    content: "";
+    position: absolute;
+    bottom: -42px;
+    left: 50%;
+    width: 2px;
+    border-radius: 50%;
+    height: 2px;
+    background-color: #d8d8d8;
+    transition: all 300ms;
+}
+.navegacion ul li a:hover::before{
+    width: 300px;
+    height: 300px;
+    bottom: -120px;
+    left: -120px;
+    border-radius: 50%;
+    opacity: .2;
+}
+.navegacion .icon-nav{
+    display: none;
+    font-size: 20px;
+    color: var(--celeste);
+}
+.icon-container{
+    width: 60px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.icon-container .icon-menu{
+    font-size: 25px;
+}
+/*------------------- FOOTER --------------------------*/
+footer{
+    margin-top: 40px;
+    padding: 60px 0;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-footer .logo{ /*De nuevo este container*/
+    margin: 20px 0;
+}
+.container-footer p{
+    font-size: 16px;
+}
+
+
+
+/*----------------------RESPONSIVE------------------------------*/
+@media screen and (max-width:800px ){
+    .fondo-opaco{
+        width: 0;
+        height: 0;
+        background-color: #000;
+        transition: all 300ms;
+        opacity: .4;
+        position: fixed;
+        top: 60px;
+        transform: translateX(800px);
+        z-index: 900;
+    }
+    .mostrar-fondo-opaco{
+        width: 100%;
+        height: 100%;
+        transform: translateX(0);
+    }
+    header{
+        overflow: visible;
+    }
+    .navegacion{
+        background-color: #fff;
+        width: 0px;
+        height: 100vh;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        margin: 0;
+        transform: translateX(400px);
+    }
+    /* en javascript esta su codigo para mostrar con toggle */
+    .show-navegacion{
+        width: 70%;
+        transform: translateX(0);
+    }
+    .navegacion ul{
+        width: 100%;
+        flex-direction: column;
+    }
+    .navegacion ul li{
+        width: 100%;
+        height: 50px;
+    }
+    .navegacion ul li a{
+        width: 100%;
+        overflow: visible;
+        transition: all 300ms;
+    }
+    .navegacion ul li a::before{
+        display: none;
+    }
+    .navegacion ul li a:hover{
+        color: #000;
+        background-color: #eeeeee;
+    }
+    .navegacion .icon-nav{
+        display: block;
+        margin: 0 20px;
+    }
+    .icon-container{
+        display: flex;
+        transition: all 300ms;
+    }
+}
